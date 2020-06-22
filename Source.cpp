@@ -470,7 +470,14 @@ int main() {
 								if (uni.courseAlreadyRegistered(studentID, courseID) == true) {
 									throw 1;
 								}
-								cout << "This course has been registered." << endl;
+								bool capacity;
+								capacity = uni.registerNewCourse(studentID, courseID);
+								if (capacity = true) {
+									cout << "This course has been registered." << endl;
+								}
+								else{
+									throw 0.1;
+								}
 								delete[]input;
 								validCourseID = true;
 							}
@@ -486,8 +493,11 @@ int main() {
 								cout << "The course is already registered by the student." << endl;
 								cout << "Please enter the course that isn't registered by the student: ";
 							}
+							catch (float) {
+								cout << "The course already has maximum number of registrations." << endl;
+								cout << "Please enter the course that has capacity: ";
+							}
 						}
-						uni.registerNewCourse(studentID, courseID);
 					}
 					else {
 						cout << "Student already has maximum workload." << endl;
@@ -672,6 +682,7 @@ int main() {
 				cout << "Press 3 to manage evaluations of students." << endl;
 				cout << "Press 4 to view evaluations of a specific course." << endl;
 				cout << "Press 5 to assign grades to students." << endl;
+				cout << "Press 6 to change password." << endl;
 				cin >> task;
 				if (task == 0) {
 					done = true;
@@ -1242,6 +1253,14 @@ int main() {
 								if (uni.depChecker(tempID, username) == false) {
 									throw tempID;
 								}
+								bool capacity;
+								capacity = uni.registerNewCourse(username, courseID);
+								if (capacity == true) {
+									cout << "This course has been registered." << endl;
+								}
+								else {
+									throw 0.1;
+								}
 								delete[]input;
 								validCourseID = true;
 							}
@@ -1261,8 +1280,12 @@ int main() {
 								cout << "You don't belong in the following department: " << x << endl;
 								cout << "Please enter the course ID for your own department: ";
 							}
+							catch (...) {
+								cout << "The course already has maximum number of registrations." << endl;
+								cout << "Please enter the course that has capacity: ";
+							}
 						}
-						uni.registerNewCourse(username, courseID);
+						
 					}
 					else {
 						cout << "This student already has maximum workload." << endl;
@@ -1504,13 +1527,13 @@ int main() {
 			}
 		}
 	}
-	if (TAList != nullptr) {
+	/*if (TAList != nullptr) {
 		for (int i = 0; i < tNumOfTA; i++) {
 			TAList[i]->deleteChar();
 		}
 		delete[]TAList;
 		TAList = nullptr;
-	}
+	}*/
 	system("pause");
 	return 0;
 }

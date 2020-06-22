@@ -387,17 +387,20 @@ void Department::addRegToCourse(char* courseID, Registration* obj) {
 	}
 }
 
-void Department::registerNewCourse(char* studentID, char* courseID) {
+bool Department::registerNewCourse(char* studentID, char* courseID) {
 	for (int i = 0; i < numOfCourses; i++) {
 		if (strcmp(courseList[i]->getSection(), courseID) == 0) {
 			if (courseList[i]->getNumOfStudents() < 50) {
 				courseList[i]->addStudent(studentID);
+				return true;
 			}
 			else {
 				cout << "Maximum student Capacity already reached!" << endl;
+				return false;
 			}
 		}
 	}
+	return false;
 }
 
 void Department::unregisterCourse(char* studentID, char* courseID) {

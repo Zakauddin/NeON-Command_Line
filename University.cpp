@@ -216,11 +216,12 @@ bool University::courseAlreadyRegistered1(char* studentID, char* courseID) {
 	return found;
 }
 
-void University::registerNewCourse(char* studentID, char* courseID) {
+bool University::registerNewCourse(char* studentID, char* courseID) {
 	char depID[3];
 	depID[0] = courseID[0];
 	depID[1] = courseID[1];
 	depID[2] = '\0';
+	bool capacity = false;
 	for (int i = 0; i < totalDep; i++) {
 		char* temp = depList[i]->getID();
 		bool found = true;
@@ -230,15 +231,18 @@ void University::registerNewCourse(char* studentID, char* courseID) {
 			}
 		}
 		if (found == true) {
-			depList[i]->registerNewCourse(studentID, courseID);
+			capacity = depList[i]->registerNewCourse(studentID, courseID);
 		}
 		temp = nullptr;
 	}
-	for (int i = 0; i < studentCount; i++) {
-		if (strcmp(stList[i]->getID(), studentID) == 0) {
-			stList[i]->registerNewCourse(courseID);
+	if (capacity == true) {
+		for (int i = 0; i < studentCount; i++) {
+			if (strcmp(stList[i]->getID(), studentID) == 0) {
+				stList[i]->registerNewCourse(courseID);
+			}
 		}
 	}
+	return capacity;
 }
 
 void University::unregisterCourse(char* studentID, char* courseID) {

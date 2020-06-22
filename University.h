@@ -52,7 +52,7 @@ public:
 	void addRegToCourse(char* depID, char* courseID, Registration* obj);
 	bool courseAlreadyRegistered(char* studentID, char* courseID);
 	bool courseAlreadyRegistered1(char* studentID, char* courseID);
-	void registerNewCourse(char* studentID, char* courseID);
+	bool registerNewCourse(char* studentID, char* courseID);
 	void unregisterCourse(char* studentID, char* courseID);
 	void addTeacherToDep(char* depID, char* teachID);
 	void printCourses(char* depID);

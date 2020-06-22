@@ -41,7 +41,7 @@ public:
 	void newStudent(char* userID);
 	void removeStudent(char* userID);
 	void addRegToCourse(char* courseID, Registration* obj);
-	void registerNewCourse(char* studentID, char* courseID);
+	bool registerNewCourse(char* studentID, char* courseID);
 	void unregisterCourse(char* studentID, char* courseID);
 	void addTeacherToDep(char* teachID);
 	void printCourses();
