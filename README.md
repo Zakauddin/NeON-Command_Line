@@ -21,3 +21,7 @@ NeON is a university management system implemented in C++. It provides functiona
 
 - `NeON - Project Statement.docx` file contains the requirements that were set for the project.
 - `File Format.txt` contains the layout of the text files used for storing the data.
+
+---
+
+Thank you for checking out NeON - Command Line! If you encounter any issues or have suggestions for improvements, please don't hesitate to let me know. 
